@@ -45,22 +45,34 @@ h2 {
     color: #374151;
 }
 
+.checkbox {
+    display: flex;
+    align-items: center;
+    accent-color: black; /* Changes checkbox color */
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.checkbox input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+
 .task {
     display: flex;
     justify-content: space-between;
+    text-align: left;
+    align-items: center;
     padding: 10px;
     list-style-type: none;
-    /* cursor: pointer; */
-    /* background: black; */
     color: rgb(56, 56, 56);
     border-radius: 5px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-/* .task:hover {
-    background: var(--task-hover-shadow);
-} */
 
 label {
     display: block;
@@ -78,7 +90,7 @@ input {
     border-radius: 15px;
 }
 
-input[type="text"] {
+input.enter-task-input[type="text"] {
     width: 100%;
     padding: 0.6rem 1rem;
     border: 1.5px solid #d1d5db;
@@ -90,12 +102,12 @@ input[type="text"] {
     transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-input[type="text"]::placeholder {
+input.enter-task-input[type="text"]::placeholder {
     color: #6b7280;
     font-style: italic;
 }
 
-input[type="text"]:hover {
+input.enter-task-input[type="text"]:hover {
     border-color: #2563eb;
     background-color: #ffffff;
     box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
@@ -103,7 +115,7 @@ input[type="text"]:hover {
 }
 
 /* Focus state for accessibility */
-input[type="text"]:focus {
+input.enter-task-input[type="text"]:focus {
     border-color: #2563eb;
     box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
     background-color: #ffffff;
@@ -135,6 +147,20 @@ button:hover {
 
 .Edit{
     cursor: pointer;
+}
+
+input.edit-input{
+    font-family: inherit;
+    font-size: 1.125rem;
+    font-weight: 500;
+    width: 100%;
+    padding: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: inherit;
+    cursor: text;
+    border-radius: var(--border-radius);
 }
 
 /* Desktop and up: 80% width max container */
