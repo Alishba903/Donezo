@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {useState} from "react";
 import "./ToDoList.css";
 
 const ToDoList = () => {
-    const [tasks, setTasks] = useState([]);
+    const [tasks, setTasks] = useState(()=>{
+        return JSON.parse(localStorage.getItem("tasks")) || []; // Load tasks from localStorage or initialize with an empty array
+    });
     const [inputValue, setInputValue] = useState("");
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    },[tasks]); // Save tasks to localStorage whenever tasks change
     
     const handleInput = (e) =>{
         setInputValue(e.target.value)
