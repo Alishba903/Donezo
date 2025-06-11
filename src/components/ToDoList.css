@@ -163,6 +163,36 @@ input.edit-input{
     border-radius: var(--border-radius);
 }
 
+/* toggle dark mode css  */
+/* Default Light Mode */
+.container{
+    background-color: #f4f4f4;
+    color: #333;
+    transition: 0.3s ease-in-out;
+}
+
+/* Dark Mode */
+.container.dark{
+    background-color: #222;
+    color: #fff;
+}
+
+/* Dark Mode Toggle Button */
+.dark-mode-toggle {
+    padding: 10px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+}
+
+.dark-mode-toggle:hover{
+    background: #555;
+}
+
+
 /* Desktop and up: 80% width max container */
 @media (min-width: 768px) {
     .container {

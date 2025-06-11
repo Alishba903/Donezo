@@ -1,9 +1,8 @@
-import React from "react";
 import { useState , useEffect } from "react";
 import "./ToDoList.css";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import { CiSaveDown1 } from "react-icons/ci";
+import { FaSave } from "react-icons/fa";
 
 const ToDoList = () => {
     const [tasks, setTasks] = useState(() => {
@@ -12,6 +11,7 @@ const ToDoList = () => {
     const [inputValue, setInputValue] = useState("");
     const [editIndex, setEditIndex] = useState(null); // Track which task is being edited
     const [editValue, setEditValue] = useState(""); // Track the value of the edit input
+    const [darkMode, setDarkMode] = useState(false); //track dark mode state
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -56,8 +56,17 @@ const ToDoList = () => {
         setEditValue("");
     };
 
+    //Dark Mode functionality 
+    const toggleDarkMode = () => {
+        setDarkMode(!darkMode); //Toggle dark mode state
+    }
+    
+
     return (
-        <div className="container">
+        <div className={`container ${darkMode ? "dark" : ""}`}>
+            <button className="dark-mode-toggle" onClick={toggleDarkMode}>
+                {darkMode ? "Light Mode" : "Dark Mode"}
+            </button>
             <h2>Donezo - Get it done, stress none.</h2>
             <label htmlFor="myInput">Add your tasks</label>
             <div className="input-btn">
@@ -91,7 +100,7 @@ const ToDoList = () => {
                     )}
                     <div className="buttons">
                         {editIndex === index ? (
-                            <button className="Save" onClick={() => handleSave(index)}><CiSaveDown1 /></button>
+                            <button className="Save" onClick={() => handleSave(index)}><FaSave /></button>
                         ) : (
                             <button className="Edit" onClick={() => handleEdit(index)}><FaRegEdit /></button>
                         )}
