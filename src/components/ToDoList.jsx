@@ -1,8 +1,9 @@
-import { useState , useEffect } from "react";
+import { useState, useEffect } from "react";
 import "./ToDoList.css";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { FaSave } from "react-icons/fa";
+import { FaSun, FaMoon } from "react-icons/fa"; // Import icons
 
 const ToDoList = () => {
     const [tasks, setTasks] = useState(() => {
@@ -12,6 +13,7 @@ const ToDoList = () => {
     const [editIndex, setEditIndex] = useState(null); // Track which task is being edited
     const [editValue, setEditValue] = useState(""); // Track the value of the edit input
     const [darkMode, setDarkMode] = useState(false); //track dark mode state
+    const [themeColor, setThemeColor] = useState("#222"); // Default dark mode color 
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -60,13 +62,29 @@ const ToDoList = () => {
     const toggleDarkMode = () => {
         setDarkMode(!darkMode); //Toggle dark mode state
     }
-    
+
+    const handleThemeChange = (event) => {
+        setThemeColor(event.target.value);
+    };
+
+    useEffect(() => {
+        document.body.style.backgroundColor = darkMode ? themeColor : "#f4f4f4";
+    }, [darkMode, themeColor]);
+
 
     return (
         <div className={`container ${darkMode ? "dark" : ""}`}>
             <button className="dark-mode-toggle" onClick={toggleDarkMode}>
-                {darkMode ? "Light Mode" : "Dark Mode"}
+                {darkMode ? <FaSun /> : <FaMoon />}
             </button>
+            {darkMode && (
+                <input
+                    type="color"
+                    value={themeColor}
+                    onChange={handleThemeChange}
+                    className="color-picker"
+                />
+            )}
             <h2>Donezo - Get it done, stress none.</h2>
             <label htmlFor="myInput">Add your tasks</label>
             <div className="input-btn">
@@ -74,7 +92,7 @@ const ToDoList = () => {
                 <button onClick={handleAddTask}>Add Task</button>
             </div>
             {tasks.map((task, index) => (
-                <div key={index} className="task" style={{ 
+                <div key={index} className="task" style={{
                     textDecoration: task.completed ? "line-through" : "none",
                     backgroundColor: editIndex === index ? '#e0f7fa' : 'white', // Visual feedback for edit mode
                     border: editIndex === index ? '2px solid #00bcd4' : '1px solid #ccc'
