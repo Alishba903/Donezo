@@ -1,223 +1,241 @@
 :root {
-    --bg-white: #ffffff;
-    --text-gray: #6b7280;
-    --border-radius: 0.75rem;
-    --shadow-light: rgba(0, 0, 0, 0.05);
-    --container-max-width: 1200px;
-    --padding-vertical: 2rem;
-    --padding-horizontal: 1.5rem;
-    --task-bg: #f9fafb;
-    --task-hover-shadow: rgba(107, 114, 128, 1);
+  --bg-white: #ffffff;
+  --text-gray: #6b7280;
+  --border-radius: 0.75rem;
+  --shadow-light: rgba(0, 0, 0, 0.05);
+  --container-max-width: 1200px;
+  --padding-vertical: 2rem;
+  --padding-horizontal: 1.5rem;
+  --task-bg: #f9fafb;
+  --task-hover-shadow: rgba(107, 114, 128, 1);
 }
 
 body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-white);
-    color: var(--text-gray);
-    display: flex;
-    justify-content: center;
-    padding: var(--padding-vertical) var(--padding-horizontal);
-    min-height: 100vh;
-    box-sizing: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: var(--bg-white);
+  color: var(--text-gray);
+  display: flex;
+  justify-content: center;
+  padding: var(--padding-vertical) var(--padding-horizontal);
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
 .container {
-    background: var(--bg-white);
-    width: 100%;
-    box-shadow: 0 4px 12px var(--task-hover-shadow);
-    border-radius: var(--border-radius);
-    padding: 2rem;
-    box-sizing: border-box;
-    min-height: 80vh;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem; /* spacing between tasks */
+  background: var(--bg-white);
+  width: 100%;
+  box-shadow: 0 4px 12px var(--task-hover-shadow);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  box-sizing: border-box;
+  min-height: 80vh;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* spacing between tasks */
 }
 
 h2 {
-    text-align: center;
-    margin: 0 0 1.5rem 0;
-    font-size: 2rem;
-    font-weight: 700;
-    color: #374151;
+  text-align: center;
+  margin: 0 0 1.5rem 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #374151;
 }
 
 .checkbox {
-    display: flex;
-    align-items: center;
-    accent-color: black; /* Changes checkbox color */
-    margin-right: 10px;
-    cursor: pointer;
+  display: flex;
+  align-items: center;
+  accent-color: black; /* Changes checkbox color */
+  margin-right: 10px;
+  cursor: pointer;
 }
 
 .checkbox input {
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 }
-
 
 .task {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-    align-items: center;
-    padding: 10px;
-    list-style-type: none;
-    color: rgb(56, 56, 56);
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, box-shadow 0.3s;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
+  align-items: center;
+  padding: 10px;
+  list-style-type: none;
+  color: rgb(56, 56, 56);
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
 
-
 label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    color: #374151;
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: #374151;
 }
 
 .input-btn {
-    display: flex;
-    gap: 5px;
+  display: flex;
+  gap: 5px;
 }
 
 input {
-    border-radius: 15px;
+  border-radius: 15px;
 }
 
 input.enter-task-input[type="text"] {
-    width: 100%;
-    padding: 0.6rem 1rem;
-    border: 1.5px solid #d1d5db;
-    border-radius: var(--border-radius);
-    background-color: #f9fafb;
-    color: #111827;
-    font-size: 1rem;
-    outline-offset: 2px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  border: 1.5px solid #d1d5db;
+  border-radius: var(--border-radius);
+  background-color: #f9fafb;
+  color: #111827;
+  font-size: 1rem;
+  outline-offset: 2px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease,
+    background-color 0.3s ease;
 }
 
 input.enter-task-input[type="text"]::placeholder {
-    color: #6b7280;
-    font-style: italic;
+  color: #6b7280;
+  font-style: italic;
 }
 
 input.enter-task-input[type="text"]:hover {
-    border-color: #2563eb;
-    background-color: #ffffff;
-    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
-    cursor: text;
+  border-color: #2563eb;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+  cursor: text;
 }
 
 /* Focus state for accessibility */
 input.enter-task-input[type="text"]:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
-    background-color: #ffffff;
+  border-color: #2563eb;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.6);
+  background-color: #ffffff;
 }
 
 button {
-    background-color: black;
-    border: 2px solid var(--task-hover-shadow);
-    color: white;
-    padding: 6px 12px; /* Adjusted padding for better button size */
-    border-radius: 15px;
-    font-weight: bold; /* Changed to font-weight for clarity */
-    transition: background-color 0.3s, box-shadow 0.3s; /* Added transition */
+  background-color: black;
+  border: 2px solid var(--task-hover-shadow);
+  color: white;
+  padding: 6px 12px; /* Adjusted padding for better button size */
+  border-radius: 15px;
+  font-weight: bold; /* Changed to font-weight for clarity */
+  transition: background-color 0.3s, box-shadow 0.3s; /* Added transition */
 }
 
 button:hover {
-    background-color: var(--task-hover-shadow);
+  background-color: var(--task-hover-shadow);
 }
 
-.buttons{
-    display: flex;
-    margin: 2px;
-    gap: 5px;
+.buttons {
+  display: flex;
+  margin: 2px;
+  gap: 5px;
 }
 
-.delete{
-    cursor: pointer;
+.delete {
+  cursor: pointer;
 }
 
-.Edit{
-    cursor: pointer;
+.Edit {
+  cursor: pointer;
 }
 
-input.edit-input{
-    font-family: inherit;
-    font-size: 1.125rem;
-    font-weight: 500;
-    width: 100%;
-    padding: 0;
-    border: none;
-    outline: none;
-    background: transparent;
-    color: inherit;
-    cursor: text;
-    border-radius: var(--border-radius);
+input.edit-input {
+  font-family: inherit;
+  font-size: 1.125rem;
+  font-weight: 500;
+  width: 100%;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  cursor: text;
+  border-radius: var(--border-radius);
 }
 
 /* toggle dark mode css  */
 /* Default Light Mode */
-.container{
-    background-color: #f4f4f4;
-    color: #333;
-    transition: 0.3s ease-in-out;
+.container {
+  background-color: #f4f4f4;
+  color: #333;
+  transition: 0.3s ease-in-out;
 }
 
 /* Light Mode */
-.light-body{
-    background-color: #f4f4f4;
-    color: #333;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+.light-body {
+  background-color: #f4f4f4;
+  color: #333;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 /* Dark Mode */
-.dark-body{
-    background-color: #222;
-    color: #fff;
-    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+.dark-body {
+  background-color: #222;
+  color: #fff;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 /* Dark Mode */
-.container.dark{
-    background-color: #222;
-    color: #fff;
+.container.dark {
+  background-color: #222;
+  color: #fff;
 }
 
 /* Dark Mode Toggle Button */
 .dark-mode-toggle {
-    padding: 10px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-}
-
-.dark-mode-toggle:hover{
-    background: #555;
-}
-
-.color-picker {
-  margin-top: 10px;
-  border: none;
+  padding: 10px;
+  /* margin-bottom: 10px; */
   cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
 }
 
+.dark-mode-toggle:hover {
+  background: #555;
+}
 
+.mode{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+input.color-picker[type="color"] {
+  width: 33.3px;
+  height: 33.3px;
+  padding: 0;
+  border-radius: 5px; 
+  border: 1px solid #333333;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+}
+
+/* For WebKit browsers */
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  border-radius: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border-radius: 0;
+}
 
 /* Desktop and up: 80% width max container */
 @media (min-width: 768px) {
-    .container {
-        width: 80%;
-        max-width: var(--container-max-width);
-    }
+  .container {
+    width: 80%;
+    max-width: var(--container-max-width);
+  }
 }

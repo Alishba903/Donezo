@@ -12,12 +12,20 @@ const ToDoList = () => {
     const [inputValue, setInputValue] = useState("");
     const [editIndex, setEditIndex] = useState(null); // Track which task is being edited
     const [editValue, setEditValue] = useState(""); // Track the value of the edit input
-    const [darkMode, setDarkMode] = useState(false); //track dark mode state
-    const [themeColor, setThemeColor] = useState("#222"); // Default dark mode color 
+    const [darkMode, setDarkMode] = useState(() => {
+        return JSON.parse(localStorage.getItem("darkMode")) || false;
+    }); //track dark mode state
+    const [themeColor, setThemeColor] = useState(() =>{
+        return localStorage.getItem("themeColor") || "#222"; // Load saved color or default
+    }); // Default dark mode color 
 
     useEffect(() => {
         localStorage.setItem("tasks", JSON.stringify(tasks));
     }, [tasks]); // Save tasks to localStorage whenever tasks change
+
+    useEffect(() => {
+        localStorage.setItem("darkMode", JSON.stringify(darkMode));
+    }, [darkMode]); // Save dark mode state to localStorage
 
     const handleInput = (e) => {
         setInputValue(e.target.value); // Update input value as user types
@@ -63,33 +71,39 @@ const ToDoList = () => {
         setDarkMode(!darkMode); //Toggle dark mode state
     }
 
+    // Color theme funtionality
     const handleThemeChange = (event) => {
-        setThemeColor(event.target.value);
+        const newColor = event.target.value;
+        setThemeColor(newColor);
+        localStorage.setItem("themeColor", newColor); //Save color in localStorage
     };
 
     useEffect(() => {
-        document.body.style.backgroundColor = darkMode ? themeColor : "#f4f4f4";
+        document.body.style.backgroundColor = darkMode  ? themeColor : "#f4f4f4";
     }, [darkMode, themeColor]);
 
 
     return (
-        <div className={`container ${darkMode ? "dark" : ""}`}>
+        <div className={`container ${darkMode ? "dark" : ""}`} style={darkMode ? { backgroundColor: themeColor, transition: 'background 0.3s' } : {}}>
+            <div className="mode">
             <button className="dark-mode-toggle" onClick={toggleDarkMode}>
                 {darkMode ? <FaSun /> : <FaMoon />}
             </button>
             {darkMode && (
-                <input
-                    type="color"
-                    value={themeColor}
-                    onChange={handleThemeChange}
-                    className="color-picker"
-                />
+                    <input
+                        type="color"
+                        value={themeColor}
+                        onChange={handleThemeChange}
+                        className="color-picker"
+                        style={{ marginLeft: 5, verticalAlign: 'middle' }}
+                    />
             )}
+            </div>
             <h2>Donezo - Get it done, stress none.</h2>
             <label htmlFor="myInput">Add your tasks</label>
             <div className="input-btn">
                 <input type="text" placeholder="Enter task..." value={inputValue} onChange={handleInput} label="Your Name" className="enter-task-input" />
-                <button onClick={handleAddTask}>Add Task</button>
+                <button onClick={handleAddTask} style={darkMode ? { backgroundColor: themeColor, color: '#fff', border: 'none' } : {}}>Add Task</button>
             </div>
             {tasks.map((task, index) => (
                 <div key={index} className="task" style={{
